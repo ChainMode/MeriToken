@@ -1,0 +1,22 @@
+# === multilingual-blueprint-workflow: 黑名单兜底 + 白名单反向放行 ===
+# 默认忽略仓库内的一切
+*
+
+# 反向放行：白名单内的目录与文件
+!.gitignore
+!README.md
+!LICENSE
+!.kiro/
+!.kiro/**
+
+!docs/
+!docs/**
+
+# 在 docs/ 与 .kiro/ 内部继续忽略明显的临时/构建产物
+docs/**/.DS_Store
+docs/**/Thumbs.db
+docs/**/*.tmp
+docs/**/*.bak
+docs/**/node_modules/
+docs/**/.cache/
+.kiro/**/.DS_Store
