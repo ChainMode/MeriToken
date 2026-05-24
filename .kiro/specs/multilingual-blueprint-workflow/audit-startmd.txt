@@ -1,0 +1,212 @@
+# Task 1.1 — `docs/*/start.md` 字节数盘点
+
+执行命令（在仓库根）：
+
+    for f in docs/*/start.md; do printf '%6s  %s\n' "$(wc -c < "$f" | tr -d ' ')" "$f"; done
+
+输出（含全部 9 个语言目录）：
+
+     0  docs/de/start.md
+     0  docs/en/start.md
+     0  docs/es/start.md
+     0  docs/fr/start.md
+     0  docs/ja/start.md
+     0  docs/ko/start.md
+     0  docs/ru/start.md
+     0  docs/zh-CN/start.md
+     0  docs/zh-TW/start.md
+
+## 判定
+
+- 命中文件总数：9 / 9（与 `Language_Code = {de, en, es, fr, ja, ko, ru, zh-CN, zh-TW}` 完全对应）
+- 字节数全部为 0
+- 无任何文件 size > 0，因此**无须**停手等待 `Human_Reviewer` 决策
+- 满足 Requirements 1.2 与 1.3 的前置条件，任务 1.2（删除 9 个空白 `start.md`）可继续执行
+
+## 用途
+
+- 可整段粘贴入对应 PR 描述，作为阶段 A 的清理证据
+- 任务 1.2、1.8（G_A 阶段门）可引用本文件中的输出作为「清理前快照」
+
+---
+
+# Task 1.2 — 删除 9 个空白 `start.md`
+
+## 追踪状态判定
+
+执行命令：
+
+    git ls-files docs/de/start.md docs/en/start.md docs/es/start.md docs/fr/start.md \
+                 docs/ja/start.md docs/ko/start.md docs/ru/start.md \
+                 docs/zh-CN/start.md docs/zh-TW/start.md
+
+输出为空 → 9 个文件全部**未被 Git 追踪**（`git status --short` 显示 `??`）。
+
+按需求选择：未追踪 → 使用 `rm`，无需 `git rm`。
+
+## 删除命令
+
+    rm docs/de/start.md docs/en/start.md docs/es/start.md docs/fr/start.md \
+       docs/ja/start.md docs/ko/start.md docs/ru/start.md \
+       docs/zh-CN/start.md docs/zh-TW/start.md
+
+退出码：0
+
+## 删除后验证
+
+执行命令：
+
+    find docs -name 'start.md' -type f
+
+输出：（空）
+
+退出码：0 → 工作区已无任何 `start.md` 文件，满足 Property 1（start.md 全语言清零）。
+
+## 判定
+
+- 删除文件总数：9 / 9
+- 残留 `start.md`：0
+- Requirements 1.1（不包含任何 `start.md`）已满足
+- Requirements 1.4（保留所有非 `start.md` 的现有文件与目录结构不变）已满足
+- Property 1 通过
+
+
+---
+
+# Task 1.5 — `git check-ignore` 白名单 / 黑名单样本验证
+
+## 工具元数据
+
+- 命令：`git check-ignore -v <path>` 与 `git check-ignore <path>`
+- 工作目录：仓库根
+- Git 版本：`git version 2.50.1 (Apple Git-155)`
+
+## 退出码语义说明（重要）
+
+Git 官方手册中 `git check-ignore` 的退出码定义：
+
+- **退出码 0**：至少一个路径被「忽略」。
+- **退出码 1**：没有路径被忽略。
+- **退出码 128**：致命错误。
+
+但加上 `-v` 之后行为有一处微妙差异：当一个路径是被 `!` 反向放行规则匹配（例如本仓库 `.gitignore` 中的 `!docs/**`、`!.kiro/**`），`-v` 会把这条**反向规则也算作「匹配到的规则」打印出来，并以退出码 0 退出**——尽管该路径在语义上**没有被忽略**。Git 文档对此的描述：
+
+> ... -v ... With this option, every value provided ... will be treated as if it has been matched against a particular rule, even if that rule is a "negative" rule (an unignore pattern).
+
+因此在白名单样本上，以下两种合法行为都对应「未被忽略」的同一语义：
+
+- 退出码 1（无输出）：路径不被任何规则匹配，例如 `README.md`、`LICENSE` 这两份在仓库根、被显式追踪、且不属于 `docs/` / `.kiro/` 子树的文件。
+- 退出码 0 + 行首打印 `!docs/**` 或 `!.kiro/**` 一类的反向规则：路径被反向放行规则匹配。
+
+为给出无歧义的「是否忽略」结论，本节同时给出 `git check-ignore <path>`（不带 `-v`）的退出码——它的退出码语义与「是否忽略」严格 1:1：
+
+- `git check-ignore <p>` 退出码 1 ⇔ p **未被忽略**（白名单期望）
+- `git check-ignore <p>` 退出码 0 ⇔ p **已被忽略**（黑名单期望）
+
+下表把两种调用都记录下来，便于核对。
+
+## 白名单样本（期望：未被忽略）
+
+| # | 路径 | `git check-ignore -v` 输出 | `-v` 退出码 | `git check-ignore` 退出码 | 是否被忽略 | 与期望一致 |
+|---|------|----------------------------|-------------|---------------------------|-----------|-----------|
+| 1 | `docs/zh-CN/blueprint/00-overview.md` | `.gitignore:13:!docs/**  docs/zh-CN/blueprint/00-overview.md` | 0（反向规则匹配） | 1 | 否 | ✅ |
+| 2 | `README.md` | （无输出） | 1 | 1 | 否 | ✅ |
+| 3 | `.kiro/specs/multilingual-blueprint-workflow/design.md` | `.gitignore:10:!.kiro/** .kiro/specs/multilingual-blueprint-workflow/design.md` | 0（反向规则匹配） | 1 | 否 | ✅ |
+| 4 | `LICENSE` | （无输出） | 1 | 1 | 否 | ✅ |
+
+注：
+
+- 样本 2 / 4 的 `-v` 输出为空且退出码为 1，是因为 `README.md` 与 `LICENSE` 不在 `docs/` 或 `.kiro/` 子树下，不会触达 `!docs/**` / `!.kiro/**` 反向规则；它们已在 Task 1.4 提交进入索引（`git ls-files` 命中），属于「已追踪、且无任何 ignore 规则匹配」的状态，对应 `git check-ignore` 的退出码 1。
+- 样本 1 / 3 的 `-v` 之所以退出码 0 而非 1，仅是 `-v` 模式把反向规则也回显的副作用，**并不代表它们被忽略**；不带 `-v` 的退出码 1 才是无歧义结论。
+
+## 黑名单样本（期望：被忽略）
+
+| # | 路径 | `git check-ignore -v` 输出 | `-v` 退出码 | `git check-ignore` 退出码 | 是否被忽略 | 与期望一致 |
+|---|------|----------------------------|-------------|---------------------------|-----------|-----------|
+| 5 | `scratch.txt` | `.gitignore:3:*  scratch.txt` | 0 | 0 | 是 | ✅ |
+| 6 | `build/output.json` | `.gitignore:3:*  build/output.json` | 0 | 0 | 是 | ✅ |
+| 7 | `docs/en/blueprint/node_modules/foo.js` | `.gitignore:20:docs/**/node_modules/     docs/en/blueprint/node_modules/foo.js` | 0 | 0 | 是 | ✅ |
+| 8 | `tmp/secret.env` | `.gitignore:3:*  tmp/secret.env` | 0 | 0 | 是 | ✅ |
+
+注：
+
+- 样本 5 / 6 / 8 命中 `.gitignore` 第 3 行的 `*` 兜底规则——它们位于仓库根或非白名单子树（`build/`、`tmp/`），因此「先全量忽略」的兜底规则生效。
+- 样本 7 命中 `.gitignore` 第 20 行的 `docs/**/node_modules/` 显式黑名单，演示了「在已放行的 `docs/**` 子树内再次精准屏蔽常见杂项目录」的设计意图。
+
+## 判定
+
+- 白名单 4 / 4 全部「未被忽略」，与设计「Tracked_Path_Whitelist 内路径不被 `.gitignore` 命中」一致 → Requirements 2.5 通过。
+- 黑名单 4 / 4 全部「被忽略」，与设计「白名单外路径被兜底 `*` 或精准黑名单忽略」一致 → Requirements 2.4 通过。
+- `Property 2`（白名单与 `.gitignore` 双向匹配）的「双向匹配」第一段在本任务覆盖完毕；第二段（`git ls-files` 全集是白名单展开后的子集）已在 Task 1.4 中验证。
+
+## 用途
+
+- 可整段粘入对应 PR 描述，作为 Stage Gate `G_A` 的核对材料之一。
+- Task 1.7（P2 校验脚本）可直接复用本节的样本数组与期望值。
+- Task 1.8（G_A 阶段门校验与签字）可引用本节作为「白名单/黑名单样本断言通过」的证据。
+
+
+---
+
+# Task 1.8 — 阶段门 G_A 校验与签字
+
+## 工具元数据
+
+- 工作目录：仓库根
+- Git 版本：`git version 2.50.1 (Apple Git-155)`
+- 当前 HEAD：`b1d27f2 chore: shrink tracked surface to whitelist`（Task 1.4 的合并 commit）
+- Reviewer 信息来源：`git config user.name` = `Jah`，`git config user.email` = `jah.guo@gmail.com`
+
+## Property 1 复跑（start.md 全语言清零）
+
+执行命令：
+
+    find docs -name 'start.md' -type f
+
+输出：（空）
+退出码：0
+
+判定：`docs/` 树下无任何 `start.md` 文件，Property 1 通过；与 Task 1.2 的删除后验证一致。
+
+## Property 2 复跑（白名单 / 黑名单 8 样本）
+
+复用 Task 1.5 的样本数组，对每个样本同时记录 `git check-ignore -v <path>` 与 `git check-ignore <path>` 的退出码。退出码语义沿用 Task 1.5 节给出的解释（不带 `-v` 的退出码与「是否被忽略」严格 1:1）。
+
+### 白名单样本（期望：未被忽略；plain 退出码 1）
+
+| # | 路径 | `-v` 输出 | `-v` 退出码 | plain 退出码 | 与期望一致 |
+|---|------|-----------|-------------|--------------|-----------|
+| 1 | `docs/zh-CN/blueprint/00-overview.md` | `.gitignore:13:!docs/**  docs/zh-CN/blueprint/00-overview.md` | 0（反向规则匹配） | 1 | ✅ |
+| 2 | `README.md` | （无输出） | 1 | 1 | ✅ |
+| 3 | `.kiro/specs/multilingual-blueprint-workflow/design.md` | `.gitignore:10:!.kiro/** .kiro/specs/multilingual-blueprint-workflow/design.md` | 0（反向规则匹配） | 1 | ✅ |
+| 4 | `LICENSE` | （无输出） | 1 | 1 | ✅ |
+
+### 黑名单样本（期望：被忽略；plain 退出码 0）
+
+| # | 路径 | `-v` 输出 | `-v` 退出码 | plain 退出码 | 与期望一致 |
+|---|------|-----------|-------------|--------------|-----------|
+| 5 | `scratch.txt` | `.gitignore:3:*  scratch.txt` | 0 | 0 | ✅ |
+| 6 | `build/output.json` | `.gitignore:3:*  build/output.json` | 0 | 0 | ✅ |
+| 7 | `docs/en/blueprint/node_modules/foo.js` | `.gitignore:20:docs/**/node_modules/     docs/en/blueprint/node_modules/foo.js` | 0 | 0 | ✅ |
+| 8 | `tmp/secret.env` | `.gitignore:3:*  tmp/secret.env` | 0 | 0 | ✅ |
+
+## 阶段门 G_A 判定
+
+- Property 1：通过（`find` 输出为空）
+- Property 2：通过（白名单 4 / 4 未被忽略；黑名单 4 / 4 被忽略；规则命中行号与 Task 1.5 记录一致，未发生回归）
+- Requirements 1.1：满足（不存在任何 `docs/{Language_Code}/start.md`）
+- Requirements 2.1：满足（仓库根 `.gitignore` 存在）
+- Requirements 2.4：满足（白名单外 4 路径均被 `.gitignore` 命中为已忽略）
+- Requirements 2.5：满足（白名单内 4 路径均不被 `.gitignore` 命中为已忽略）
+- Requirements 2.6：满足（Task 1.4 已确认追踪面收敛至 `{LICENSE, README.md}`，全部位于 `Tracked_Path_Whitelist` 内）
+
+阶段 A 全部断言通过，阶段门 `G_A` 放行，可进入阶段 B（撰写 zh-CN 蓝图）。
+
+## 签字
+
+阶段门 G_A 签字以合并 commit trailer 形式留痕（设计文档「校对完成的判定标准」节要求）。本次签字将在一个 `git commit --allow-empty` 的空 commit 中体现，commit 消息体含：
+
+    Stage-Gate: G_A-passed
+    Reviewed-by: Jah <jah.guo@gmail.com>
+
+Reviewer 取自当前仓库 `git config user.{name,email}`，与 Task 1.4 合并 commit 的 author 同源。

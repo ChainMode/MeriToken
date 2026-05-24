@@ -20,3 +20,7 @@ docs/**/*.bak
 docs/**/node_modules/
 docs/**/.cache/
 .kiro/**/.DS_Store
+
+# 蓝图目录下的 README.md 与 glossary.md 仅作本地草稿/索引，不进入 GitHub 追踪面
+docs/**/blueprint/README.md
+docs/**/blueprint/glossary.md
