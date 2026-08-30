@@ -6,20 +6,25 @@
 !.gitignore
 !README.md
 !LICENSE
-!.kiro/
-!.kiro/**
+
+# 注意：此处原有 `!.kiro/` + `!.kiro/**` 两行反向放行，导致 10 个 `.kiro/**`
+# 文件被 git 跟踪进公开仓。依 PO 裁定 D-2 / D-3（2026-08-12）已撤销：
+#   D-1 = openspec 与 .kiro 等过程工具永久留本地、只供开发团队；docs/ 是唯一公开产物。
+#   D-2 = 全 15 仓统一忽略 openspec/ 与 .kiro/。
+# 本文件顶部的 `*` 黑名单兜底即已覆盖 .kiro/ 与 openspec/，无需再显式列出。
 
 !docs/
 !docs/**
 
-# 在 docs/ 与 .kiro/ 内部继续忽略明显的临时/构建产物
+# 在 docs/ 内部继续忽略明显的临时/构建产物
+# （原有的 `.kiro/**/.DS_Store` 一行已随 .kiro 反向放行的撤销一并移除：
+#   .kiro/ 现由顶部 `*` 兜底整体忽略，其内部噪声规则已无意义。）
 docs/**/.DS_Store
 docs/**/Thumbs.db
 docs/**/*.tmp
 docs/**/*.bak
 docs/**/node_modules/
 docs/**/.cache/
-.kiro/**/.DS_Store
 
 # 蓝图目录下的 README.md 与 glossary.md 仅作本地草稿/索引，不进入 GitHub 追踪面
 docs/**/blueprint/README.md
