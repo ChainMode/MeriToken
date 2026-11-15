@@ -3,6 +3,10 @@
 *
 
 # 反向放行：白名单内的目录与文件
+!LICENSE-DOCS
+!SECURITY.md
+!CONTRIBUTING.md
+!CODE_OF_CONDUCT.md
 !.gitignore
 !README.md
 !LICENSE
