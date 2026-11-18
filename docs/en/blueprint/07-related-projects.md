@@ -27,10 +27,10 @@ The table below gives the minimal external-link set required by this blueprint. 
 
 | Upstream term | Minimal note in this blueprint | Upstream_Project_Doc_Link |
 |----------|-----------------------|---------------------------|
-| ifay     | The overall project system on which MeriToken depends | https://ifay.ai/docs/ifay |
-| GMC      | The upper-level system to which MeriToken belongs (Global Merit Chain) | https://ifay.ai/docs/gmc |
-| Fay      | A non-personal subject that references MeriToken, in parallel with personal subjects | https://ifay.ai/docs/fay |
-| agent    | The traditional agent-program paradigm contrasted with the ifay paradigm | https://ifay.ai/docs/agent |
+| ifay     | The overall project system on which MeriToken depends | https://ifay.ai |
+| GMC      | The upper-level system to which MeriToken belongs (Global Merit Chain) | https://ifay.ai |
+| Fay      | A non-personal subject that references MeriToken, in parallel with personal subjects | https://ifay.ai |
+| agent    | The traditional agent-program paradigm contrasted with the ifay paradigm | https://ifay.ai |
 
 Other upstream topics such as phase and the overall framework have dedicated pages on the ifay.ai site; readers are expected to navigate the site to access them as needed. This blueprint does not pin those links here, in order to avoid link drift.
 

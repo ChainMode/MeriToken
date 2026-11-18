@@ -27,10 +27,10 @@ La tabla siguiente ofrece el conjunto mínimo de enlaces externos que requiere e
 
 | Término aguas arriba | Nota mínima en este blueprint | Upstream_Project_Doc_Link |
 |----------|-----------------------|---------------------------|
-| ifay     | El sistema global del proyecto del que depende MeriToken | https://ifay.ai/docs/ifay |
-| GMC      | El sistema superior al que pertenece MeriToken (Global Merit Chain) | https://ifay.ai/docs/gmc |
-| Fay      | Un sujeto no personal que hace referencia a MeriToken, en paralelo a los sujetos personales | https://ifay.ai/docs/fay |
-| agent    | El paradigma tradicional de programa agent contrastado con el paradigma ifay | https://ifay.ai/docs/agent |
+| ifay     | El sistema global del proyecto del que depende MeriToken | https://ifay.ai |
+| GMC      | El sistema superior al que pertenece MeriToken (Global Merit Chain) | https://ifay.ai |
+| Fay      | Un sujeto no personal que hace referencia a MeriToken, en paralelo a los sujetos personales | https://ifay.ai |
+| agent    | El paradigma tradicional de programa agent contrastado con el paradigma ifay | https://ifay.ai |
 
 Otros temas aguas arriba como phase y el marco general disponen de páginas dedicadas en el sitio ifay.ai; se espera que las lectoras y lectores naveguen por el sitio para acceder a ellos según necesidad. Este blueprint no fija aquí esos enlaces para evitar la deriva de enlaces.
 

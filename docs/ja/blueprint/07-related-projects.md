@@ -27,10 +27,10 @@ ifay 体系に初めて触れる読者には、本書を「外部リンクの入
 
 | 上流用語 | 本ブループリントにおける最小限の説明 | Upstream_Project_Doc_Link |
 |----------|--------------------------------------|---------------------------|
-| ifay     | MeriToken が依拠する全体的なプロジェクト体系 | https://ifay.ai/docs/ifay |
-| GMC      | MeriToken の上位体系（Global Merit Chain） | https://ifay.ai/docs/gmc |
-| Fay      | 非個人主体の MeriToken 参照者、個人主体と並ぶ | https://ifay.ai/docs/fay |
-| agent    | ifay パラダイムと対照をなす従来のエージェント・プログラム・パラダイム | https://ifay.ai/docs/agent |
+| ifay     | MeriToken が依拠する全体的なプロジェクト体系 | https://ifay.ai |
+| GMC      | MeriToken の上位体系（Global Merit Chain） | https://ifay.ai |
+| Fay      | 非個人主体の MeriToken 参照者、個人主体と並ぶ | https://ifay.ai |
+| agent    | ifay パラダイムと対照をなす従来のエージェント・プログラム・パラダイム | https://ifay.ai |
 
 phase、全体フレームワーク等のその他の上流テーマについては、ifay.ai サイト内に専用ページが用意されており、読者は必要に応じてサイトのナビゲーションから検索しアクセスされたい。本ブループリントはリンクの漂流を避けるため、これらのリンクをこの一覧に固定化しない。
 

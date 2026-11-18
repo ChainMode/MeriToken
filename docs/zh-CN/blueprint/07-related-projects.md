@@ -27,10 +27,10 @@
 
 | 上游术语 | 在本蓝图中的最小说明 | Upstream_Project_Doc_Link |
 |----------|-----------------------|---------------------------|
-| ifay     | 美誉值所依托的整体项目体系 | https://ifay.ai/docs/ifay |
-| GMC      | 美誉值的上位体系（Global Merit Chain） | https://ifay.ai/docs/gmc |
-| Fay      | 非个人主体的美誉值引用者，与个人主体并列 | https://ifay.ai/docs/fay |
-| agent    | 与 ifay 范式形成对照的传统代理程序范式 | https://ifay.ai/docs/agent |
+| ifay     | 美誉值所依托的整体项目体系 | https://ifay.ai |
+| GMC      | 美誉值的上位体系（Global Merit Chain） | https://ifay.ai |
+| Fay      | 非个人主体的美誉值引用者，与个人主体并列 | https://ifay.ai |
+| agent    | 与 ifay 范式形成对照的传统代理程序范式 | https://ifay.ai |
 
 phase、整体框架等其余上游议题在 ifay.ai 站点内有专门页面承载，由读者按需在站点导航中检索访问；本蓝图不在此清单内固化其链接，以避免链接漂移。
 

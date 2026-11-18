@@ -26,7 +26,7 @@ Security and protocol-privacy advisories apply to the current specification and 
 
 - **Primary Channel (Recommended)**: Submit a report privately via **GitHub Private Vulnerability Reporting (Security Advisories)**:
   - https://github.com/ChainMode/MeriToken/security/advisories/new
-- **Fallback Email Channels**: If GitHub Security Advisories is unavailable to you, email **[jah.g@ifay.ai](mailto:jah.g@ifay.ai)** or **[hello@meritora.org](mailto:hello@meritora.org)** with `[SECURITY][MeriToken]` in the subject line.
+- **Fallback Email Channel**: If GitHub Security Advisories is unavailable to you, email **[jah.g@ifay.ai](mailto:jah.g@ifay.ai)** with `[SECURITY][MeriToken]` in the subject line.
 
 Please describe the protocol scenario, affected specification chapters, threat model assumptions, and potential privacy or attribution impact.
 

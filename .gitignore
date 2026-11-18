@@ -15,6 +15,12 @@
 !.github/workflows/
 .github/workflows/*
 !.github/workflows/docs-ci.yml
+!.github/ISSUE_TEMPLATE/
+.github/ISSUE_TEMPLATE/*
+!.github/ISSUE_TEMPLATE/bug_report.yml
+!.github/ISSUE_TEMPLATE/feature_request.yml
+!.github/ISSUE_TEMPLATE/config.yml
+!.github/pull_request_template.md
 
 # 注意：此处原有 `!.kiro/` + `!.kiro/**` 两行反向放行，导致 10 个 `.kiro/**`
 # 文件被 git 跟踪进公开仓。依 PO 裁定 D-2 / D-3（2026-08-12）已撤销：
@@ -35,6 +41,5 @@ docs/**/*.bak
 docs/**/node_modules/
 docs/**/.cache/
 
-# 蓝图目录下的 README.md 与 glossary.md 仅作本地草稿/索引，不进入 GitHub 追踪面
+# 蓝图目录下的 README.md 仅作本地草稿/索引，不进入 GitHub 追踪面
 docs/**/blueprint/README.md
-docs/**/blueprint/glossary.md

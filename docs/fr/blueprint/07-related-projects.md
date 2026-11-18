@@ -27,10 +27,10 @@ Le tableau ci-dessous donne l'ensemble minimal de liens externes requis par ce b
 
 | Terme en amont | Note minimale dans ce blueprint | Upstream_Project_Doc_Link |
 |----------|-----------------------|---------------------------|
-| ifay     | Le système global du projet dont dépend MeriToken | https://ifay.ai/docs/ifay |
-| GMC      | Le système de niveau supérieur auquel appartient MeriToken (Global Merit Chain) | https://ifay.ai/docs/gmc |
-| Fay      | Un sujet non personnel qui référence MeriToken, en parallèle avec les sujets personnels | https://ifay.ai/docs/fay |
-| agent    | Le paradigme traditionnel d'agent programmatique mis en contraste avec le paradigme ifay | https://ifay.ai/docs/agent |
+| ifay     | Le système global du projet dont dépend MeriToken | https://ifay.ai |
+| GMC      | Le système de niveau supérieur auquel appartient MeriToken (Global Merit Chain) | https://ifay.ai |
+| Fay      | Un sujet non personnel qui référence MeriToken, en parallèle avec les sujets personnels | https://ifay.ai |
+| agent    | Le paradigme traditionnel d'agent programmatique mis en contraste avec le paradigme ifay | https://ifay.ai |
 
 D'autres sujets en amont tels que phase et le cadre global disposent de pages dédiées sur le site ifay.ai ; les lectrices et lecteurs sont attendus pour naviguer sur le site afin d'y accéder selon leurs besoins. Ce blueprint n'épingle pas ces liens ici, afin d'éviter la dérive des liens.
 

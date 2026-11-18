@@ -27,10 +27,10 @@
 
 | 상위 용어 | 본 블루프린트에서의 최소 설명 | Upstream_Project_Doc_Link |
 |-----------|--------------------------------|---------------------------|
-| ifay     | MeriToken 이 의지하는 전반적 프로젝트 체계 | https://ifay.ai/docs/ifay |
-| GMC      | MeriToken 의 상위 체계 (Global Merit Chain) | https://ifay.ai/docs/gmc |
-| Fay      | 비개인 주체의 MeriToken 참조자, 개인 주체와 나란히 함 | https://ifay.ai/docs/fay |
-| agent    | ifay 패러다임과 대조를 이루는 전통적 대리 프로그램 패러다임 | https://ifay.ai/docs/agent |
+| ifay     | MeriToken 이 의지하는 전반적 프로젝트 체계 | https://ifay.ai |
+| GMC      | MeriToken 의 상위 체계 (Global Merit Chain) | https://ifay.ai |
+| Fay      | 비개인 주체의 MeriToken 참조자, 개인 주체와 나란히 함 | https://ifay.ai |
+| agent    | ifay 패러다임과 대조를 이루는 전통적 대리 프로그램 패러다임 | https://ifay.ai |
 
 phase, 전체 프레임워크 등 그 외의 상위 주제는 ifay.ai 사이트 안에 전용 페이지가 마련되어 있으며, 독자가 필요에 따라 사이트 내비게이션에서 검색해 방문하면 된다. 본 블루프린트에서는 링크 표류를 회피하기 위해 본 목록에 그 링크를 고정하지 않는다.
 

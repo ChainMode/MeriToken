@@ -27,10 +27,10 @@ Die folgende Tabelle gibt das von diesem Blueprint geforderte minimale externe V
 
 | Vorgelagerter Begriff | Minimaler Hinweis in diesem Blueprint | Upstream_Project_Doc_Link |
 |----------|-----------------------|---------------------------|
-| ifay     | Das gesamte Projektsystem, von dem MeriToken abhängt | https://ifay.ai/docs/ifay |
-| GMC      | Das übergeordnete System, dem MeriToken zugeordnet ist (Global Merit Chain) | https://ifay.ai/docs/gmc |
-| Fay      | Ein nicht-persönliches Subjekt, das MeriToken in Bezug nimmt, parallel zu persönlichen Subjekten | https://ifay.ai/docs/fay |
-| agent    | Das traditionelle agent-Programm-Paradigma im Kontrast zum ifay-Paradigma | https://ifay.ai/docs/agent |
+| ifay     | Das gesamte Projektsystem, von dem MeriToken abhängt | https://ifay.ai |
+| GMC      | Das übergeordnete System, dem MeriToken zugeordnet ist (Global Merit Chain) | https://ifay.ai |
+| Fay      | Ein nicht-persönliches Subjekt, das MeriToken in Bezug nimmt, parallel zu persönlichen Subjekten | https://ifay.ai |
+| agent    | Das traditionelle agent-Programm-Paradigma im Kontrast zum ifay-Paradigma | https://ifay.ai |
 
 Andere vorgelagerte Themen wie phase und Gesamtrahmen haben eigene Seiten auf der ifay.ai-Site; Leserinnen und Leser navigieren bei Bedarf selbst zu ihnen. Dieser Blueprint fixiert diese Verweise hier nicht, um einer Linkdrift vorzubeugen.
 
