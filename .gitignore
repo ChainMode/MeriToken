@@ -10,6 +10,11 @@
 !.gitignore
 !README.md
 !LICENSE
+!.github/
+.github/*
+!.github/workflows/
+.github/workflows/*
+!.github/workflows/docs-ci.yml
 
 # 注意：此处原有 `!.kiro/` + `!.kiro/**` 两行反向放行，导致 10 个 `.kiro/**`
 # 文件被 git 跟踪进公开仓。依 PO 裁定 D-2 / D-3（2026-08-12）已撤销：
